@@ -1,0 +1,14 @@
+$ ./check_hpe_alletra.py --host alletra01 --credentials-file /usr/local/nagios/etc/alletra/credentials.env --check alerts --alerts-minutes 60
+CRIT - objects=2, ok=0, warn=1, crit=1, unknown=0 - Alert "1001", CRITICAL - Host port 1:1:1 link down (resource=port 1:1:1, time=2026-10-05T09:12:44+02:00) - Alert "1002", MINOR - CPG SSD_backup usage above warning threshold (resource=CPG SSD_backup, time=2026-10-05T09:15:00+02:00)
+$ echo $?
+2
+
+$ ./check_hpe_alletra.py --host alletra01 --credentials-file /usr/local/nagios/etc/alletra/credentials.env --check alerts --alerts-minutes 60
+UNKNOWN - objects=1, ok=0, warn=0, crit=0, unknown=1 - Alert "1003", alerts member[0]: missing required field "category". Cannot determine whether this event is an ALERT (category=2); verify /api/v1/eventlog schema.
+$ echo $?
+3
+
+$ ./check_hpe_alletra.py --host alletra01 --credentials-file /usr/local/nagios/etc/alletra/credentials.env --check alerts --alerts-minutes 60
+OK - objects=1, ok=1, warn=0, crit=0, unknown=0 - No alerts in the last 60 minutes
+$ echo $?
+0

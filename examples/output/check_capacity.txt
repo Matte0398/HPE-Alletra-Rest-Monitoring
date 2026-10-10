@@ -1,0 +1,4 @@
+$ ./check_hpe_alletra.py --host alletra01 --credentials-file /usr/local/nagios/etc/alletra/credentials.env --check capacity --warn 80 --crit 90
+OK - objects=1, ok=1, warn=0, crit=0, unknown=0 - Total=40.00 TiB, allocated=24.00 TiB, free=16.00 TiB, failed=0 MiB, allocated=60.0% (warn=80%, crit=90%)
+$ echo $?
+0

@@ -1,0 +1,112 @@
+{
+  "host": "alletra01",
+  "overall_state": "CRIT",
+  "raw": {
+    "ports": {
+      "members": [
+        {
+          "hardwareType": 1,
+          "linkState": 4,
+          "mode": 2,
+          "portPos": {
+            "cardPort": 1,
+            "node": 0,
+            "slot": 1
+          },
+          "protocol": 1
+        },
+        {
+          "hardwareType": 1,
+          "linkState": 17,
+          "mode": 2,
+          "portPos": {
+            "cardPort": 1,
+            "node": 1,
+            "slot": 1
+          },
+          "protocol": 1
+        },
+        {
+          "hardwareType": 2,
+          "linkState": 4,
+          "mode": 4,
+          "portPos": {
+            "cardPort": 2,
+            "node": 0,
+            "slot": 5
+          },
+          "protocol": 4
+        }
+      ],
+      "total": 3
+    }
+  },
+  "results": [
+    {
+      "check": "ports",
+      "details": {
+        "_hardwareName": "FC",
+        "_linkName": "READY",
+        "_modeName": "TARGET",
+        "_protocolName": "FC",
+        "hardwareType": 1,
+        "linkState": 4,
+        "mode": 2,
+        "portPos": {
+          "cardPort": 1,
+          "node": 0,
+          "slot": 1
+        },
+        "protocol": 1
+      },
+      "item": "0:1:1",
+      "state": 0,
+      "state_name": "OK",
+      "summary": "mode=TARGET, link=READY, protocol=FC, hardware=FC"
+    },
+    {
+      "check": "ports",
+      "details": {
+        "_hardwareName": "FC",
+        "_linkName": "DOWN",
+        "_modeName": "TARGET",
+        "_protocolName": "FC",
+        "hardwareType": 1,
+        "linkState": 17,
+        "mode": 2,
+        "portPos": {
+          "cardPort": 1,
+          "node": 1,
+          "slot": 1
+        },
+        "protocol": 1
+      },
+      "item": "1:1:1",
+      "state": 2,
+      "state_name": "CRIT",
+      "summary": "mode=TARGET, link=DOWN, protocol=FC, hardware=FC"
+    },
+    {
+      "check": "ports",
+      "details": {
+        "_hardwareName": "ETH",
+        "_linkName": "READY",
+        "_modeName": "PEER",
+        "_protocolName": "IP",
+        "hardwareType": 2,
+        "linkState": 4,
+        "mode": 4,
+        "portPos": {
+          "cardPort": 2,
+          "node": 0,
+          "slot": 5
+        },
+        "protocol": 4
+      },
+      "item": "0:5:2",
+      "state": 0,
+      "state_name": "OK",
+      "summary": "mode=PEER, link=READY, protocol=IP, hardware=ETH"
+    }
+  ]
+}

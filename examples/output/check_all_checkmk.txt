@@ -1,0 +1,23 @@
+$ ./check_hpe_alletra.py --host alletra01 --credentials-file /usr/local/nagios/etc/alletra/credentials.env --check all --output checkmk
+<<<local>>>
+0 "Alletra System" - WSAPI reachable - system alletra01 (model=HPE Alletra Storage MP, version=10.5.50.19)
+0 "Alletra Nodes" - Online nodes=2/2, master=0, cluster=0,1
+0 "Alletra Capacity" - Total=40.00 TiB, allocated=24.00 TiB, free=16.00 TiB, failed=0 MiB, allocated=60.0% (warn=80%, crit=90%)
+0 "Alletra Disk 1:1" - State=Normal, ExampleVendor NVMe-SSD, 3840 GB, NVMe/MLC, SN=EXAMPLE0001, FW=1.0
+0 "Alletra Disk 1:2" - State=Normal, ExampleVendor NVMe-SSD, 3840 GB, NVMe/MLC, SN=EXAMPLE0002, FW=1.0
+0 "Alletra Disk 1:3" - State=Normal, ExampleVendor NVMe-SSD, 3840 GB, NVMe/MLC, SN=EXAMPLE0003, FW=1.0
+0 "Alletra Disk 1:4" - State=Normal, ExampleVendor NVMe-SSD, 3840 GB, NVMe/MLC, SN=EXAMPLE0004, FW=1.0
+0 "Alletra CPG SSD_r6" - state=NORMAL, used=12.00 TiB/20.00 TiB (60.0%, warn=80%, crit=90%)
+1 "Alletra CPG SSD_backup" - state=NORMAL, used=7.00 TiB/8.00 TiB (87.5%, warn=80%, crit=90%)
+0 "Alletra Volume esx_ds01" - API object discovered, state=1
+0 "Alletra Volume esx_ds02" - API object discovered, state=1
+0 "Alletra Host esx01" - persona=11, domain=production, fc_paths=2
+0 "Alletra Host esx02" - persona=11, domain=production, fc_paths=2
+0 "Alletra Port 0:1:1" - mode=TARGET, link=READY, protocol=FC, hardware=FC
+2 "Alletra Port 1:1:1" - mode=TARGET, link=DOWN, protocol=FC, hardware=FC
+0 "Alletra Port 0:5:2" - mode=PEER, link=READY, protocol=IP, hardware=ETH
+0 "Alletra RemoteCopy rc_production" - Mode=STARTED, Status=NORMAL, role=PRIMARY, remote=rc_production_dr, targets=STARTED:alletra02, volumes=2, 2/2 synced
+2 "Alletra Alerts 1001" - CRITICAL - Host port 1:1:1 link down (resource=port 1:1:1, time=2026-10-05T09:12:44+02:00)
+1 "Alletra Alerts 1002" - MINOR - CPG SSD_backup usage above warning threshold (resource=CPG SSD_backup, time=2026-10-05T09:15:00+02:00)
+$ echo $?
+0
