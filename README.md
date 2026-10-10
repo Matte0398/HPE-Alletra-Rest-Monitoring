@@ -49,6 +49,9 @@ HPE-Alletra-Rest-Monitoring/
 |-- .gitignore
 `-- examples/
     |-- credentials.env.example
+    |-- nagios/
+    |   |-- commands.cfg
+    |   `-- services.cfg
     `-- output/
         |-- check_all.txt
         |-- check_all_checkmk.txt
@@ -223,6 +226,27 @@ OK - objects=1, ok=1, warn=0, crit=0, unknown=0 - WSAPI reachable - system <SYST
 ```
 
 Default discovery output lists identifiers, one per line. With `--output json`, it returns an array of objects with `item` and `data` fields, containing the identifier and source object. Successful discovery exits `0`, independently of individual object health.
+
+## Nagios integration
+
+Copy the templates from [`examples/nagios/`](examples/nagios/) into your Nagios configuration:
+
+- [commands.cfg](examples/nagios/commands.cfg) defines `check_hpe_alletra`, using `$USER1$` for the plugin directory and `$HOSTADDRESS$` for the monitored array address.
+- [services.cfg](examples/nagios/services.cfg) defines a service group and one service for each of the ten supported checks, with explicit capacity/CPG thresholds and an alert lookback window.
+
+Replace `<SERVICE_TEMPLATE>`, `<MONITORED_HOST_NAME>` and `<CREDENTIALS_FILE_PATH>` before loading the configuration. The host must already be defined in Nagios, and the monitoring account must be able to execute the plugin and read the credentials file.
+
+Install the executable in the directory configured by `$USER1$`:
+
+```bash
+install -m 755 check_hpe_alletra.py '<PLUGIN_DIRECTORY>/check_hpe_alletra.py'
+```
+
+The command accepts the credentials-file path as `$ARG1$`, the check name as `$ARG2$` and optional flags as `$ARG3$`. Services use Nagios output and return the aggregated state of the objects in their selected check.
+
+TLS verification remains enabled. If necessary, add `--no-cert-check` to the command definition or a service's optional arguments. Choose an alert window that covers the check interval and expected scheduling delays; overlapping windows can report the same event again.
+
+Test execution as the monitoring account and validate the Nagios configuration before reloading it.
 
 ## Checkmk integration
 
