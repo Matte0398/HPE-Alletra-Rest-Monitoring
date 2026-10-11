@@ -1,8 +1,37 @@
-﻿# HPE Alletra REST Monitoring
+# HPE Alletra REST Monitoring
 
 Python monitoring plugin for **HPE Alletra Storage MP**, using the WSAPI REST interface. It opens a session, collects storage information, evaluates checks and closes the session.
 
 Use it for Nagios-compatible active checks, Checkmk local-check output, JSON integrations or manual troubleshooting. The plugin uses only the Python standard library; Python 3.9 or later is recommended.
+
+## Contents
+
+- [Repository structure](#repository-structure)
+- [Quick start](#quick-start)
+- [Example outputs](#example-outputs)
+- [Authentication](#authentication)
+- [Available checks](#available-checks)
+- [Output formats and exit codes](#output-formats-and-exit-codes)
+- [Discovery](#discovery)
+- [Nagios integration](#nagios-integration)
+- [Checkmk integration](#checkmk-integration)
+- [CLI reference](#cli-reference)
+- [Troubleshooting and direct WSAPI requests](#troubleshooting-and-direct-wsapi-requests)
+- [License](#license)
+
+## Repository structure
+
+```text
+HPE-Alletra-Rest-Monitoring/
+|-- examples/
+|   |-- nagios/
+|   |-- output/
+|   `-- credentials.env.example
+|-- .gitignore
+|-- check_hpe_alletra.py
+|-- LICENSE
+`-- README.md
+```
 
 ## Quick start
 
@@ -39,27 +68,7 @@ Then run a single check or the complete report:
 
 TLS certificate verification is enabled by default. If necessary for a test environment, add `--no-cert-check`; otherwise ensure the issuing CA is trusted by the monitoring server.
 
-## Project layout and example outputs
-
-```text
-HPE-Alletra-Rest-Monitoring/
-|-- check_hpe_alletra.py
-|-- README.md
-|-- LICENSE
-|-- .gitignore
-`-- examples/
-    |-- credentials.env.example
-    |-- nagios/
-    |   |-- commands.cfg
-    |   `-- services.cfg
-    `-- output/
-        |-- check_all.txt
-        |-- check_all_checkmk.txt
-        |-- check_alerts.txt
-        |-- check_capacity.txt
-        |-- check_ports.json
-        `-- discover_disks.txt
-```
+## Example outputs
 
 The following are the six available output files. Individual checks without a dedicated sample can be inspected in the complete reports.
 
